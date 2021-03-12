@@ -1,0 +1,133 @@
+// Header
+
+#skipnav {
+    position: fixed;
+    top: $global-margin;
+    left: 50%;
+    border: 1px solid $light-gray;
+    transform: translateX(-50%);
+    z-index: -5;
+    padding: (.25 * $global-padding);
+    background-color: #fff;
+    opacity: 0;
+    
+    &:focus {
+      z-index: 1000;
+      opacity: 1;
+    }
+}
+
+header h1 {
+    font-size: $global-font-size;
+    font-weight: bold;
+    margin-bottom: 0;
+
+    a {
+        padding: $global-menu-padding;
+        display: block;
+    }
+}
+
+header .top-bar,
+#search {
+    @include xy-grid-container;
+}
+
+header .top-bar {
+    position: relative;
+
+    &:after {
+        content: "";
+        left: -9999px;
+        right: -9999px;
+        background-color: $topbar-background;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
+    a {
+        color: #fff;
+    }
+}
+
+#search {
+    padding: $global-padding;
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        bottom: 0;
+        left: -9999px;
+        right: -9999px;
+        background-color: $light-gray;
+    }
+}
+
+#search-form {
+    display: flex;
+
+    input[type=text] {
+        margin-bottom: 0;
+        height: auto;
+    }
+
+    button {
+        margin-bottom: 0;
+    }
+}
+
+// Global
+
+button {
+    @include button();
+}
+
+#content {
+    @include xy-grid-container;
+    padding: $global-padding;
+}
+
+// Footer 
+
+footer {
+    @include xy-grid-container;
+}
+
+// Home
+
+.intro {
+    padding: $global-padding 0;
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: -9999px;
+        right: -9999px;
+        top: -1 * $global-padding;
+        bottom: 0;
+        background-color: $secondary-color;
+        z-index: -1;
+    }
+}
+
+// Browse
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin: $global-margin 0;
+        border-bottom: 1px solid $light-gray;
+
+        &:last-child {
+            border-bottom-color: transparent;
+        }
+    }
+}
