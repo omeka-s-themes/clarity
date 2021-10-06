@@ -9,6 +9,7 @@ $this->headTitle()->append($this->setting('installation_title', 'Omeka S'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->prependStylesheet('//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic,700');
+$this->headScript()->appendFile($this->assetUrl('js/foundation.min.js'));
 $this->headScript()->prependFile($this->assetUrl('js/default.js'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
@@ -44,12 +45,7 @@ $userBar = $this->userBar();
                 </div>
                 <div class="top-bar-right">        
                     <nav>
-                    <?php
-                    echo $site->publicNav()->menu()->renderMenu(null, [
-                        'maxDepth' => $this->themeSetting('nav_depth') - 1,
-                        'ulClass' => 'dropdown menu'
-                    ]);
-                    ?>
+                        <?php echo $site->publicNav()->menu()->setPartial('common/dropdown-navigation.phtml')->renderPartial(); ?>
                     </nav>
                 </div>
             </div>
@@ -69,5 +65,8 @@ $userBar = $this->userBar();
                 <?php echo $this->translate('Powered by Omeka S'); ?>
             <?php endif; ?>
         </footer>
+        <script>
+          $(document).foundation();
+        </script>
     </body>
 </html>
