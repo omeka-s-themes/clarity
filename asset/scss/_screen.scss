@@ -17,6 +17,11 @@
     }
 }
 
+header {
+    width: 100%;
+    overflow: hidden;
+}
+
 header h1 {
     font-size: $global-font-size;
     font-weight: bold;
@@ -50,6 +55,7 @@ header .top-bar {
     a {
         color: #fff;
     }
+
 }
 
 #search {
@@ -91,6 +97,12 @@ button {
     padding: $global-padding;
 }
 
+blockquote {
+    border-left: 5px solid #dfdfdf;
+    font-size: 1.25 * $global-font-size;
+    padding: (.5 * $global-padding) $global-padding;
+}
+
 // Footer 
 
 footer {
@@ -130,4 +142,40 @@ footer {
             border-bottom-color: transparent;
         }
     }
+}
+
+// Page Blocks
+
+.blocks {
+    clear: both;
+    @include clearfix;
+}
+
+.sub-menu,
+.toc-block {
+    padding: $global-padding;
+    background-color: $secondary-color;
+    float: left;
+    margin: 0 $global-margin $global-margin 0;
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+        border: 0;
+
+        & > li:not(:last-child) {
+            border-bottom: 1px solid $primary-color;
+            padding-bottom: .5 * $global-padding;
+            margin-bottom: .5 * $global-margin;
+        }
+    }
+}
+
+.file {
+    border: 0;
+}
+
+.file .resource {
+    background-color: $secondary-color;
+    padding: $global-padding;
 }
