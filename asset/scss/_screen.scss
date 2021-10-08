@@ -88,7 +88,9 @@ header .top-bar {
 
 // Global
 
-button {
+button,
+.button,
+[type="submit"] {
     @include button();
 }
 
@@ -178,4 +180,99 @@ footer {
 .file .resource {
     background-color: $secondary-color;
     padding: $global-padding;
+}
+
+// Forms
+
+.field {
+    margin-bottom: $global-margin;
+
+    label, {
+        @include label;
+    }
+
+    label,
+    .label {
+        background-color: $secondary-color;
+        color: $label-color-alt;
+        font-size: $global-font-size;
+        padding: .5 * $global-padding;
+    }
+
+    .field-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: .25 * $global-margin;
+
+        label,
+        .label,
+        button,
+        .button {
+            height: 2 * $global-padding;
+        }
+    }
+
+    .expand,
+    .collapse {
+        display: none;
+    }
+
+    .collapsible {
+        order: 3;
+        margin-left: auto;
+    }
+
+    button.add-value {
+        padding: .5 * $global-padding;
+        vertical-align: top;
+        margin: 0 (.25 * $global-margin);
+    }
+
+    .inputs {
+        button,
+        .button,
+        select,
+        [type="text"] {
+            height: 2.5 * $global-padding;
+            margin-bottom: 0;
+        }
+
+        label,
+        .label {
+            background-color: transparent;
+            color: $body-font-color;
+        }
+    }
+}
+
+.inputs {
+    border: 1px solid $light-gray;
+    padding: $global-padding;
+}
+
+// Advanced Search 
+
+#advanced-search .value {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#advanced-search #property-queries select,
+#advanced-search #property-queries [type="text"] {
+    margin: 0 (.25 * $global-margin) 0 0;
+    width: auto;
+}
+
+#resource-class select {
+    margin-right: .25 * $global-margin;
+}
+
+.field [type="text"],
+.field select {
+    width: auto;
+}
+
+[name="sort_by"] {
+    margin-right: .25 * $global-margin;
 }
