@@ -187,7 +187,7 @@ footer {
 .field {
     margin-bottom: $global-margin;
 
-    label, {
+    label {
         @include label;
     }
 
