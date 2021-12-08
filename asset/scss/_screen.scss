@@ -134,14 +134,25 @@ footer {
 
 // Browse
 
-.resource-list {
+ul.resource-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 (-.5 * $global-margin);
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + #{$global-margin});
 
     li {
-        margin: $global-margin 0;
-        border-bottom: 1px solid $light-gray;
+        border: 1px solid $light-gray;
+        border-radius: 2px;
+        padding: $global-menu-padding;
+        margin: .5 * $global-margin;
+        width: calc(25% - #{$global-margin});
+    }
+
+    &.list li {
+        border: 0 0 1px;
+        padding: 0;
 
         &:last-child {
             border-bottom-color: transparent;
