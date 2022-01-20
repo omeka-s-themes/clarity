@@ -1,0 +1,31 @@
+<?php 
+$fulltextSearch = $this->params()->fromQuery('fulltext_search'); 
+$singleItemLabel = ($this->themeSetting('singular_item_label')) ? $this->themeSetting('singular_item_label') : $translate('item');
+?>
+<?php echo $this->hyperlink(
+    sprintf($this->translate('Advanced %s search'), $singleItemLabel),
+    $this->url(null, ['action' => 'items-advanced', 'class' => 'advanced-search'], ['query' => $this->params()->fromQuery()], true),
+    ['class' => 'advanced-search']
+); ?>
+
+<h2><?php echo sprintf($this->translate('%s results for "%s"'), ucwords($singleItemLabel), $this->escapeHtml($fulltextSearch)); ?></h2>
+
+<?php echo $this->pagination(); ?>
+
+<div class="item results">
+    <ul>
+        <?php foreach ($items as $item): ?>
+        <?php $sites = $item->sites(); ?>
+        <li>
+            <span class="result-title"><?php echo $item->displayTitle(); ?></span>
+            <ul>
+                <?php foreach ($sites as $site): ?>
+                <li><?php echo $this->hyperlink($site->title(), $item->siteUrl($site->slug())); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php echo $this->pagination(); ?>

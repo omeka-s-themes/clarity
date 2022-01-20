@@ -1,0 +1,19 @@
+<?php $pluralItemLabel = ($this->themeSetting('plural_item_label')) ? ucwords($this->themeSetting('plural_item_label')) : $translate('items'); ?>
+<div class="field">
+    <div class="field-meta">
+        <label for="site_id"><?php echo $this->translate('Search by site'); ?></label>
+        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
+        <div class="collapsible">
+            <div class="field-description"><?php echo $this->translate(sprintf('Searches for %s that are assigned to this site.', $pluralItemLabel)); ?></div>
+        </div>
+    </div>
+    <div class="inputs">
+        <?php echo $this->siteSelect([
+            'name' => 'site_id',
+            'attributes' => [
+                'id' => 'site_id',
+                'value' => $query['site_id'] ?? null,
+            ]
+        ]); ?>
+    </div>
+</div>

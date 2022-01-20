@@ -1,0 +1,8 @@
+<?php $singleItemSetLabel = ($this->themeSetting('singular_item_set_label')) ? $this->themeSetting('singular_item_set_label') : $translate('item set'); ?>
+<h1><?php echo $this->hyperlink($this->setting('installation_title', 'Omeka S'), $this->url('top', ['action' => 'index'])); ?></h1>
+<h2><?php echo sprintf($this->translate('Advanced %s search'), $singleItemSetLabel); ?></h2>
+
+<?php echo $this->partial(
+    'common/cross-site-search/advanced-item-set-form.phtml',
+    ['action' => $this->url(null, ['action' => 'results'], true)]
+); ?>
